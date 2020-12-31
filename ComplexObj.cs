@@ -46,6 +46,9 @@ namespace Polymorphism
         }
         public override void Xuat()
         {
+            Console.WriteLine("--------------------------------------------------------------------------");
+            Console.WriteLine("STT | Hinh            | Toa Do 1 | Toa Do 2 | Mau Sac | Chu Vi | Dien Tich");
+            Console.WriteLine("--------------------------------------------------------------------------");
             foreach (Shape s in lShape)
                 s.Xuat();
         }

@@ -4,6 +4,8 @@ namespace Polymorphism
 {
     public abstract class Shape
     {
+        private static int IdSeed = 0;
+        protected int iID;
         protected Point P1;
         protected Point P2;
         private int iColor;
@@ -18,6 +20,10 @@ namespace Polymorphism
             get { return this.P2; }
             set { this.P2 = value; }
         }
+        public int Id {
+            get { return this.iID; }
+            set { this.iID = value; }
+        }
         public int color
         {
             get { return this.iColor; }
@@ -27,12 +33,16 @@ namespace Polymorphism
         {
             this.p1 = new Point();
             this.p2 = new Point();
+            this.Id = IdSeed;
+            IdSeed++;
         }
         public Shape(Point p1, Point p2, int color)
         {
             this.p1 = p1;
             this.p2 = p2;
             this.color = color;
+            this.Id = IdSeed;
+            IdSeed++;
         }
         ~Shape()
         {

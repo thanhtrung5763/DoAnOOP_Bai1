@@ -70,7 +70,7 @@ namespace Polymorphism
         }
         public override void Xuat()
         {
-            Console.WriteLine($"Hinh Chu Nhat\tToa Do 1: {this.p1.ThongTin()}\tToa do 2: {this.p2.ThongTin()}\tMau Sac: {this.color}\tChu Vi: {Math.Round(this.ChuVi(), 2)}\tDien Tich: {Math.Round(this.DienTich(),2)}");
+            Console.WriteLine($"{this.Id, -3} | {"Hinh Chu Nhat", -15} | {this.p1.ThongTin(), -8} | {this.p2.ThongTin(), -8} | {this.color, -7} | {Math.Round(this.ChuVi(), 2), -6} | {Math.Round(this.DienTich(),2), -9}");
         }
     }
 }

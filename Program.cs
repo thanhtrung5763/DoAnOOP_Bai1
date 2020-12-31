@@ -37,11 +37,11 @@ namespace Polymorphism
             ComplexObj c1 = new ComplexObj(lShape);
             Graphic g1 = new Graphic(lShape);
 
-            Console.WriteLine(c1.DienTich());
-            Console.WriteLine(c1.ChuVi());
+            //Console.WriteLine(c1.DienTich());
+            //Console.WriteLine(c1.ChuVi());
             // c1.ThayDoiMau();
-            c1.Ve();
-            c1.Xuat();
+            //c1.Ve();
+            //c1.Xuat();
         }
     }
 }

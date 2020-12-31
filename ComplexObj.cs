@@ -52,5 +52,11 @@ namespace Polymorphism
             foreach (Shape s in lShape)
                 s.Xuat();
         }
+        public void Merge() {
+
+        }
+        public void Devide() {
+            
+        }
     }
 }

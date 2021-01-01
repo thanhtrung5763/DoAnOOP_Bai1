@@ -70,7 +70,6 @@ namespace Polymorphism
         }
         public override void Xuat()
         {
-            Console.WriteLine($"-----------------------------COMPLEX MERGED-------------------------------");
             base.Xuat();
         }
     }

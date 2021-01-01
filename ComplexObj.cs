@@ -49,7 +49,7 @@ namespace Polymorphism
                 try {
                     Square temp = new Square();
                     temp.Nhap();
-                    if(temp.p1.x != temp.p2.x && temp.p1.y != temp.p2.y)   
+                    if(temp.p1.x != temp.p2.x && temp.p1.y != temp.p2.y && Math.Abs(temp.p1.x - temp.p2.x) == Math.Abs(temp.p1.y - temp.p2.y))   
                         this.lShape.Add(temp);
                     else
                         throw new Exception("2 diem vua nhap da trung nhau hoac thang hang!!!");
@@ -79,7 +79,7 @@ namespace Polymorphism
                 try {
                     Circle temp = new Circle();
                     temp.Nhap();
-                    if(temp.p1.x != temp.p2.x && temp.p1.y != temp.p2.y)   
+                    if(temp.p1.x != temp.p2.x && temp.p1.y != temp.p2.y && Math.Abs(temp.p1.x - temp.p2.x) == Math.Abs(temp.p1.y - temp.p2.y))   
                         this.lShape.Add(temp);
                     else
                         throw new Exception("Khong the ve hinh tron voi khung hinh vuong!!!");
@@ -97,7 +97,7 @@ namespace Polymorphism
                     if(temp.p1.x != temp.p2.x && temp.p1.y != temp.p2.y)   
                         this.lShape.Add(temp);
                     else
-                        throw new Exception("2 diem trung nhau hoac thang hang!");
+                        throw new Exception("2 diem trung nhau hoac thang hang!!!");
                 }
                 catch(Exception e) {
                     Console.WriteLine(e.Message);
@@ -155,8 +155,90 @@ namespace Polymorphism
         }
         public override void Ve()
         {
-            foreach(Shape s in lShape)
-                s.Ve();
+            Console.WriteLine("Ve ComplexObject");
+        }
+        public override void PhongTo(int mul)
+        {
+            foreach(Shape s in lShape) {
+                s.PhongTo(mul);
+            }
+            this.p1.x *= mul;
+            this.p1.y *= mul;
+            this.p2.x *= mul;
+            this.p2.y *= mul;
+        }
+        public override void ThuNho(int div)
+        {
+            foreach(Shape s in lShape) {
+                s.ThuNho(div);
+            }
+            try {
+                if(this.p1.x / div != 0)
+                    this.p1.x /= div;
+                else throw new Exception("He So Thu Nho Qua Lon");
+                if(this.p1.y / div != 0)
+                    this.p1.y /= div;
+                else throw new Exception("He So Thu Nho Qua Lon");
+                if(this.p2.x / div != 0)
+                    this.p2.x /= div;
+                else throw new Exception("He So Thu Nho Qua Lon");
+                if(this.p2.y / div != 0)
+                    this.p2.y /= div;
+                else throw new Exception("He So Thu Nho Qua Lon");
+            }
+            catch(Exception e) {
+                Console.WriteLine(e.Message);
+            }
+        }
+                public override void Menu()
+        {
+            int chon;
+            do {
+                Console.Write("\t\t\t |===========================COMPLEX OBJECT============================|\n");
+                base.Menu();
+                chon = int.Parse(Console.ReadLine());
+                switch(chon) {
+                    case 1:
+                            this.Ve();
+                            break;
+                    case 2:
+                            Console.WriteLine("Nhap hoanh do va tung do tinh tien: ");
+                            Point p = new Point();
+                            p.Nhap();
+                            this.DiChuyen(p);
+                            break;
+                    case 3:
+                            Console.WriteLine(this.ChuVi());
+                            break;
+                    case 4:
+                            Console.WriteLine(this.DienTich());
+                            break;
+                    case 5:
+                            int mul;
+                            Console.WriteLine("Nhap he so phong to: ");
+                            mul = int.Parse(Console.ReadLine());
+                            this.PhongTo(mul);
+                            break;
+                    case 6:
+                            int div;
+                            Console.WriteLine("Nhap he so thu nho: ");
+                            div = int.Parse(Console.ReadLine());
+                            this.ThuNho(div);
+                            break;
+                    case 7:
+                            this.Xuat();
+                            break;
+                    case 8:
+                            Console.Clear();
+                            Program.Main(null);
+                            break;
+                    default:
+                            Console.Clear();
+                            Console.WriteLine("Khong Hop Le. Xin Nhap Lai");
+                            break;
+                }
+            }
+            while(chon != 8);
         }
         public override void Xuat()
         {

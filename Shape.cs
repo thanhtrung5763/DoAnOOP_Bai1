@@ -78,6 +78,24 @@ namespace Polymorphism
             this.color = int.Parse(Console.ReadLine());
         }
         public abstract void Xuat();
-
+        public virtual void ThongTin() {
+            
+        }
+        public abstract void PhongTo(int mul);
+        public abstract void ThuNho(int mul);
+        public virtual void Menu() {
+            Console.WriteLine("\n");
+            Console.WriteLine("\t\t\t |================================MENU=================================|\n");
+            Console.WriteLine("\t\t\t |                            1. Ve                                    |\n");
+            Console.WriteLine("\t\t\t |                            2. Di Chuyen                             |\n");
+            Console.WriteLine("\t\t\t |                            3. Chu Vi                                |\n");
+            Console.WriteLine("\t\t\t |                            4. Dien Tich                             |\n");
+            Console.WriteLine("\t\t\t |                            5. Phong To                              |\n");
+            Console.WriteLine("\t\t\t |                            6. Thu Nho                               |\n");
+            Console.WriteLine("\t\t\t |                            7. Xuat                                  |\n");
+            Console.WriteLine("\t\t\t |                            8. Quay Lai                              |\n");
+            Console.WriteLine("\t\t\t |===============================CHOOSE================================|\n");
+            Console.Write("Ban chon: ");
+        }
     }
 }

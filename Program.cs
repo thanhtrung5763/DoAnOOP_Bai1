@@ -35,13 +35,26 @@ namespace Polymorphism
             lShape.Add(s1);
             lShape.Add(s2);
             ComplexObj c1 = new ComplexObj(lShape);
-            Graphic g1 = new Graphic(lShape);
 
-            //Console.WriteLine(c1.DienTich());
-            //Console.WriteLine(c1.ChuVi());
+            // Console.WriteLine(c1.DienTich());
+            // Console.WriteLine(c1.ChuVi());
             // c1.ThayDoiMau();
             //c1.Ve();
-            //c1.Xuat();
+            // c1.Xuat();
+
+            ComplexObj c2 = new ComplexObj();
+            c2.Nhap();
+            Console.WriteLine(c2.DienTich());
+            Console.WriteLine(c2.ChuVi());
+            c2.Xuat();
+            GroupComplex gcmp = new GroupComplex();
+            gcmp.Comp.Add(c1);
+            gcmp.Comp.Add(c2);
+            gcmp.Xuat();
+            Graphic g1 = new Graphic();
+            g1.merge(c1);
+            g1.divide();
+            g1.Xuat();
         }
     }
 }

@@ -3,15 +3,9 @@ using System.Collections.Generic;
 
 namespace Polymorphism
 {
-    class Graphic
+    public class Graphic: ComplexObj
     {
-        private List<Shape> lShape = new List<Shape>();
-        public List<Shape> Shape
-        {
-            get { return this.lShape; }
-            set { this.lShape = value; }
-        }
-        public Graphic()
+        public Graphic(): base()
         {
         }
         ~Graphic()
@@ -21,21 +15,63 @@ namespace Polymorphism
         {
             this.lShape = lShape;
         }
-        public void merge(Point p1, Point p2)
+        public void merge(ComplexObj cmp)
         {
-            foreach (Shape s in lShape)
-            {
-                s.p1 = p1;
-                s.p2 = p2;
+            int soHinh = 0;
+            int Id;
+            int idx;
+            Console.WriteLine("So luong hinh muon merge: ");
+            soHinh = int.Parse(Console.ReadLine());
+            for(int i = 0; i < soHinh; i++) {
+                bool flag = true;
+                while(flag) {
+                    Console.WriteLine("Nhap Id hinh muon merge: ");
+                    Id = int.Parse(Console.ReadLine());
+                    idx = cmp.Shape.FindIndex(x => x.Id == Id);
+                    if(idx != -1) {
+                        this.lShape.Add(cmp.Shape[idx]);
+                        flag = false;
+                    }
+                    else {
+                        Console.WriteLine("Khong tim thay hinh!!! Xin Nhap Lai");
+                    }
+                }
             }
+            Console.WriteLine("Da Merge Xong");
+            TaoKhung();
         }
-        public void divide(Point p1, Point p2)
+        public void divide()
         {
-            foreach (Shape s in lShape)
-            {
-                s.p1 = p1;
-                s.p2 = p2;
+            int soHinh = 0;
+            int Id;
+            int idx;
+            Console.WriteLine("Nhap so hinh muon devide: ");
+            soHinh = int.Parse(Console.ReadLine());
+            for(int i = 0; i < soHinh; i++) {
+                bool flag = true;
+                while(flag) {
+                    Console.WriteLine("Nhap Id hinh muon devide: ");
+                    Id = int.Parse(Console.ReadLine());
+                    idx = this.lShape.FindIndex(x => x.Id == Id);
+                    if(idx != -1) {
+                        this.lShape.RemoveAt(idx);
+                        flag = false;
+                    }
+                    else {
+                        Console.WriteLine("Khong tim thay hinh!!! Xin Nhap Lai");
+                    }
+                }
             }
+            Console.WriteLine("Da Devide Xong");
+        }
+        public override void TaoKhung()
+        {
+            base.TaoKhung();
+        }
+        public override void Xuat()
+        {
+            Console.WriteLine($"-----------------------------COMPLEX MERGED-------------------------------");
+            base.Xuat();
         }
     }
 }

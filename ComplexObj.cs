@@ -204,7 +204,7 @@ namespace Polymorphism
                             break;
                 }
             }
-            while(chon != 8);
+            while(chon != 8 || chon != 9);
         }
         public override void Xuat()
         {

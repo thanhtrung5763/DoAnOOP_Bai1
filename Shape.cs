@@ -4,7 +4,7 @@ namespace Polymorphism
 {
     public abstract class Shape
     {
-        private static int IdSeed = 0;
+        public static int IdSeed = 0;
         protected int iID;
         protected Point P1;
         protected Point P2;
@@ -63,7 +63,7 @@ namespace Polymorphism
             this.p2 = p2;
             this.color = color;
         }
-        public void DiChuyen(Point p)
+        public virtual void DiChuyen(Point p)
         {
             this.p1.x += p.x;
             this.p2.x += p.x;
@@ -84,7 +84,6 @@ namespace Polymorphism
         public abstract void PhongTo(int mul);
         public abstract void ThuNho(int mul);
         public virtual void Menu() {
-            Console.WriteLine("\n");
             Console.WriteLine("\t\t\t |================================MENU=================================|\n");
             Console.WriteLine("\t\t\t |                            1. Ve                                    |\n");
             Console.WriteLine("\t\t\t |                            2. Di Chuyen                             |\n");
@@ -94,6 +93,21 @@ namespace Polymorphism
             Console.WriteLine("\t\t\t |                            6. Thu Nho                               |\n");
             Console.WriteLine("\t\t\t |                            7. Xuat                                  |\n");
             Console.WriteLine("\t\t\t |                            8. Quay Lai                              |\n");
+            Console.WriteLine("\t\t\t |                            9. Thoat                                 |\n");
+            Console.WriteLine("\t\t\t |===============================CHOOSE================================|\n");
+            Console.Write("Ban chon: ");
+        }
+        public virtual void Menu2() {
+            Console.WriteLine("\t\t\t |================================MENU=================================|\n");
+            Console.WriteLine("\t\t\t |                            1. Ve                                    |\n");
+            Console.WriteLine("\t\t\t |                            2. Di Chuyen                             |\n");
+            Console.WriteLine("\t\t\t |                            3. Chu Vi                                |\n");
+            Console.WriteLine("\t\t\t |                            4. Dien Tich                             |\n");
+            Console.WriteLine("\t\t\t |                            5. Phong To                              |\n");
+            Console.WriteLine("\t\t\t |                            6. Thu Nho                               |\n");
+            Console.WriteLine("\t\t\t |                            7. Xuat                                  |\n");
+            Console.WriteLine("\t\t\t |                            8. Quay Lai                              |\n");
+            Console.WriteLine("\t\t\t |                            9. Thoat                                 |\n");
             Console.WriteLine("\t\t\t |===============================CHOOSE================================|\n");
             Console.Write("Ban chon: ");
         }

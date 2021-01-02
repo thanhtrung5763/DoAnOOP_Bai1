@@ -23,13 +23,16 @@ namespace Polymorphism
         public static void Menu() {
             int chon;
             do {
-                Console.WriteLine("\n");
+                Console.WriteLine("\t\t\t |============================GROUP COMPLEX============================|\n");
                 Console.WriteLine("\t\t\t |================================MENU=================================|\n");
                 Console.WriteLine("\t\t\t |                            1. Merge                                 |\n");
                 Console.WriteLine("\t\t\t |                            2. Divide                                |\n");
                 Console.WriteLine("\t\t\t |                            3. Danh Sach ComplexObj                  |\n");
                 Console.WriteLine("\t\t\t |                            4. Danh Sach MerDivObj                   |\n");
-                Console.WriteLine("\t\t\t |                            5. Quay Lai                              |\n");
+                Console.WriteLine("\t\t\t |                            5. Thao tac voi ComplexObj               |\n");
+                Console.WriteLine("\t\t\t |                            6. Thao tac voi MerDivObj                |\n");
+                Console.WriteLine("\t\t\t |                            7. Quay Lai                              |\n");
+                Console.WriteLine("\t\t\t |                            8. Thoat                                 |\n");
                 Console.WriteLine("\t\t\t |===============================CHOOSE================================|\n");
                 Console.Write("Ban chon: ");
                 chon = int.Parse(Console.ReadLine());
@@ -74,14 +77,39 @@ namespace Polymorphism
                             break;
                     case 5:
                             Console.Clear();
+                            Console.WriteLine("Chon ComplexObj: ");
+                            idx = int.Parse(Console.ReadLine());
+                            if(idx >= 0 && idx < GroupComplex.Comp.Count) {
+                                GroupComplex.Comp[idx].Menu();
+                            }
+                            else {
+                                Console.WriteLine("Khong tim thay ComplexObj");
+                            }
+                            break;
+                    case 6:
+                            Console.Clear();
+                            Console.WriteLine("Chon MerDivObj: ");
+                            idx = int.Parse(Console.ReadLine());
+                            if(idx >= 0 && idx < GroupMerDiv.Gra.Count) {
+                                GroupMerDiv.Gra[idx].Menu();
+                            }
+                            else {
+                                Console.WriteLine("Khong tim thay MerDivObj");
+                            }
+                            break;
+                    case 7:
+                            Console.Clear();
                             Program.Main(null);
+                            break;
+                    case 8:
+                            Environment.Exit(0);
                             break;
                     default:
                             Console.Clear();
                             break;
                 }
             }
-            while(chon != 5);
+            while(chon != 7 || chon != 8);
         }
     }
 }

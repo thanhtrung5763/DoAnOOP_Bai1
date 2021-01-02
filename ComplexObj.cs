@@ -15,6 +15,7 @@ namespace Polymorphism
 
         public ComplexObj() : base()
         {
+            IdSeed--;
             this.lShape = new List<Shape>();
         }
         public ComplexObj(List<Shape> lShape)
@@ -35,8 +36,10 @@ namespace Polymorphism
                     temp.Nhap();
                     if(!(temp.p1.x == temp.p2.x && temp.p1.y == temp.p1.y))   
                         this.lShape.Add(temp);
-                    else
+                    else {
+                        IdSeed--;
                         throw new Exception("2 diem vua nhap trung nhau!!!");
+                    }
                 }
                 catch(Exception e) {
                     Console.WriteLine(e.Message);
@@ -51,8 +54,10 @@ namespace Polymorphism
                     temp.Nhap();
                     if(temp.p1.x != temp.p2.x && temp.p1.y != temp.p2.y && Math.Abs(temp.p1.x - temp.p2.x) == Math.Abs(temp.p1.y - temp.p2.y))   
                         this.lShape.Add(temp);
-                    else
+                    else {
+                        IdSeed--;
                         throw new Exception("2 diem vua nhap da trung nhau hoac thang hang!!!");
+                    }
                 }
                 catch(Exception e) {
                     Console.WriteLine(e.Message);
@@ -66,8 +71,10 @@ namespace Polymorphism
                     temp.Nhap();
                     if(temp.p1.x != temp.p2.x && temp.p1.y != temp.p2.y)   
                         this.lShape.Add(temp);
-                    else
+                    else {
+                        IdSeed--;
                         throw new Exception("2 diem vua nhap da trung nhau hoac thang hang!!!");
+                    }
                 }
                 catch(Exception e) {
                     Console.WriteLine(e.Message);
@@ -81,8 +88,10 @@ namespace Polymorphism
                     temp.Nhap();
                     if(temp.p1.x != temp.p2.x && temp.p1.y != temp.p2.y && Math.Abs(temp.p1.x - temp.p2.x) == Math.Abs(temp.p1.y - temp.p2.y))   
                         this.lShape.Add(temp);
-                    else
+                    else {
+                        IdSeed--;
                         throw new Exception("Khong the ve hinh tron voi khung hinh vuong!!!");
+                    }
                 }
                 catch(Exception e) {
                     Console.WriteLine(e.Message);
@@ -96,8 +105,10 @@ namespace Polymorphism
                     temp.Nhap();
                     if(temp.p1.x != temp.p2.x && temp.p1.y != temp.p2.y)   
                         this.lShape.Add(temp);
-                    else
+                    else {
+                        IdSeed--;
                         throw new Exception("2 diem trung nhau hoac thang hang!!!");
+                    }
                 }
                 catch(Exception e) {
                     Console.WriteLine(e.Message);
@@ -106,38 +117,11 @@ namespace Polymorphism
             Console.WriteLine("Nhap mau sac cho ComplexObj: ");
             this.color = int.Parse(Console.ReadLine());
         }
-        public virtual void TaoKhung() {
-            int x1Max = int.MinValue;
-            int x2Min = int.MaxValue;
-            int y1Max = int.MinValue;
-            int y2Min = int.MaxValue;
-            foreach(Shape s in this.lShape) {
-                if(s.p1.x > x1Max)
-                    x1Max = s.p1.x;
-                if(s.p2.x > x1Max)
-                    x1Max = s.p2.x;
-                if(s.p1.y > y1Max)
-                    y1Max = s.p1.y;
-                if(s.p2.y > y1Max)
-                    y1Max = s.p2.y;
-                
+        public override void DiChuyen(Point p)
+        {
+            foreach(Shape s in lShape) {
+                s.DiChuyen(p);
             }
-            foreach(Shape s in this.lShape) {
-                if(s.p1.x != x1Max && s.p2.x != x1Max && s.p1.y != y1Max && s.p2.y != y1Max) {
-                    if(s.p1.x < x2Min)
-                        x2Min = s.p1.x;
-                    if(s.p2.x < x2Min)
-                        x2Min = s.p2.x;
-                    if(s.p1.y < y2Min)
-                        y2Min = s.p1.y;
-                    if(s.p2.y < y2Min)
-                        y2Min = s.p2.y;
-                }
-            }
-            this.p1.x = x1Max;
-            this.p1.y = y1Max;
-            this.p2.x = x2Min;
-            this.p2.y = y2Min;
         }
         public override double DienTich()
         {
@@ -162,35 +146,14 @@ namespace Polymorphism
             foreach(Shape s in lShape) {
                 s.PhongTo(mul);
             }
-            this.p1.x *= mul;
-            this.p1.y *= mul;
-            this.p2.x *= mul;
-            this.p2.y *= mul;
         }
         public override void ThuNho(int div)
         {
             foreach(Shape s in lShape) {
                 s.ThuNho(div);
             }
-            try {
-                if(this.p1.x / div != 0)
-                    this.p1.x /= div;
-                else throw new Exception("He So Thu Nho Qua Lon");
-                if(this.p1.y / div != 0)
-                    this.p1.y /= div;
-                else throw new Exception("He So Thu Nho Qua Lon");
-                if(this.p2.x / div != 0)
-                    this.p2.x /= div;
-                else throw new Exception("He So Thu Nho Qua Lon");
-                if(this.p2.y / div != 0)
-                    this.p2.y /= div;
-                else throw new Exception("He So Thu Nho Qua Lon");
-            }
-            catch(Exception e) {
-                Console.WriteLine(e.Message);
-            }
         }
-                public override void Menu()
+        public override void Menu()
         {
             int chon;
             do {
@@ -208,10 +171,10 @@ namespace Polymorphism
                             this.DiChuyen(p);
                             break;
                     case 3:
-                            Console.WriteLine(this.ChuVi());
+                            Console.WriteLine($"Chu vi ComplexObj: {Math.Round(this.ChuVi(), 2)}");
                             break;
                     case 4:
-                            Console.WriteLine(this.DienTich());
+                            Console.WriteLine($"Dien tich ComplexObj: {Math.Round(this.DienTich(), 2)}");
                             break;
                     case 5:
                             int mul;
@@ -231,6 +194,9 @@ namespace Polymorphism
                     case 8:
                             Console.Clear();
                             Program.Main(null);
+                            break;
+                    case 9:
+                            Environment.Exit(0);
                             break;
                     default:
                             Console.Clear();

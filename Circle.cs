@@ -30,7 +30,7 @@ namespace Polymorphism
             base.Nhap(p1, p2, color);
             this.BanKinh = Math.Abs(this.p1.x - this.p2.x);
         }
-        public new void DiChuyen(Point p)
+        public override void DiChuyen(Point p)
         {
             base.DiChuyen(p);
         }
@@ -124,12 +124,15 @@ namespace Polymorphism
                     case 8:
                             Program.Main(null);
                             break;
+                    case 9:
+                            Environment.Exit(0);
+                            break;
                     default:
                             Console.WriteLine("Khong Hop Le. Xin Nhap Lai");
                             break;
                 }
             }
-            while(chon != 8);
+            while(chon != 8 || chon != 9);
         }
         public override void ThongTin()
         {

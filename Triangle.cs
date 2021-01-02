@@ -42,10 +42,9 @@ namespace Polymorphism
             base.Nhap(p1, p2, color);
             changeLengthWidth();
         }
-        public new void DiChuyen(Point p)
+        public override void DiChuyen(Point p)
         {
             base.DiChuyen(p);
-            changeLengthWidth();
         }
         public override double DienTich()
         {
@@ -141,13 +140,16 @@ namespace Polymorphism
                                     Console.Clear();
                                     Program.Main(null);
                                     break;
+                            case 9:
+                                    Environment.Exit(0);
+                                    break;
                             default:
                                     Console.Clear();
                                     Console.WriteLine("Khong Hop Le. Xin Nhap Lai");
                                     break;
                         }
                     }
-                    while(chon != 8);
+                    while(chon != 8 || chon != 9);
                 }
                 else
                     throw new Exception("2 diem vua nhap da trung nhau hoac thang hang!!!");

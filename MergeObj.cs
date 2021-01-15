@@ -3,15 +3,15 @@ using System.Collections.Generic;
 
 namespace Polymorphism
 {
-    public class Graphic: ComplexObj
+    public class MergeObj: ComplexObj
     {
-        public Graphic(): base()
+        public MergeObj(): base()
         {
         }
-        ~Graphic()
+        ~MergeObj()
         {
         }
-        public Graphic(List<Shape> lShape)
+        public MergeObj(List<Shape> lShape)
         {
             this.lShape = lShape;
         }
@@ -80,68 +80,19 @@ namespace Polymorphism
         {
             Console.WriteLine("Ve MerDivObj");
         }
-        public override void PhongTo(int mul)
+        public override void PhongTo()
         {
-            base.PhongTo(mul);
+            base.PhongTo();
             TaoKhung();
         }
-        public override void ThuNho(int div)
+        public override void ThuNho()
         {
-            base.ThuNho(div);
+            base.ThuNho();
             TaoKhung();
         }
         public override void Menu()
         {
-            int chon;
-            do {
-                Console.Write("\t\t\t |=============================MER/DIV OBJ=============================|\n");
-                base.Menu2();
-                chon = int.Parse(Console.ReadLine());
-                switch(chon) {
-                    case 1:
-                            this.Ve();
-                            break;
-                    case 2:
-                            Console.WriteLine("Nhap hoanh do va tung do tinh tien: ");
-                            Point p = new Point();
-                            p.Nhap();
-                            this.DiChuyen(p);
-                            break;
-                    case 3:
-                            Console.WriteLine($"Chu vi MerDivObj: {Math.Round(this.ChuVi(), 2)}");
-                            break;
-                    case 4:
-                            Console.WriteLine($"Dien tich MerDivObj: {Math.Round(this.DienTich(), 2)}");
-                            break;
-                    case 5:
-                            int mul;
-                            Console.WriteLine("Nhap he so phong to: ");
-                            mul = int.Parse(Console.ReadLine());
-                            this.PhongTo(mul);
-                            break;
-                    case 6:
-                            int div;
-                            Console.WriteLine("Nhap he so thu nho: ");
-                            div = int.Parse(Console.ReadLine());
-                            this.ThuNho(div);
-                            break;
-                    case 7:
-                            this.Xuat();
-                            break;
-                    case 8:
-                            Console.Clear();
-                            GroupComplex.Menu();
-                            break;
-                    case 9:
-                            Environment.Exit(0);
-                            break;
-                    default:
-                            Console.Clear();
-                            Console.WriteLine("Khong Hop Le. Xin Nhap Lai");
-                            break;
-                }
-            }
-            while(chon != 8 || chon != 9);
+            base.Menu();
         }
         public void TaoKhung() {
             int x1Max = int.MinValue;
@@ -157,19 +108,16 @@ namespace Polymorphism
                     y1Max = s.p1.y;
                 if(s.p2.y > y1Max)
                     y1Max = s.p2.y;
-                
             }
             foreach(Shape s in this.lShape) {
-                if(s.p1.x != x1Max && s.p2.x != x1Max && s.p1.y != y1Max && s.p2.y != y1Max) {
-                    if(s.p1.x < x2Min)
-                        x2Min = s.p1.x;
-                    if(s.p2.x < x2Min)
-                        x2Min = s.p2.x;
-                    if(s.p1.y < y2Min)
-                        y2Min = s.p1.y;
-                    if(s.p2.y < y2Min)
-                        y2Min = s.p2.y;
-                }
+                if(s.p1.x < x2Min)
+                    x2Min = s.p1.x;
+                if(s.p2.x < x2Min)
+                    x2Min = s.p2.x;
+                if(s.p1.y < y2Min)
+                    y2Min = s.p1.y;
+                if(s.p2.y < y2Min)
+                    y2Min = s.p2.y;
             }
             this.p1.x = x1Max;
             this.p1.y = y1Max;

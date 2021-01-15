@@ -141,78 +141,53 @@ namespace Polymorphism
         {
             Console.WriteLine("Ve ComplexObject");
         }
-        public override void PhongTo(int mul)
+        public override void PhongTo()
         {
+            int mul;
+            Console.WriteLine("Nhap he so phong to: ");
+            mul = int.Parse(Console.ReadLine());
             foreach(Shape s in lShape) {
                 s.PhongTo(mul);
             }
         }
-        public override void ThuNho(int div)
+        public override void ThuNho()
         {
+            bool flag = false;
+            int div;
+            Console.WriteLine("Nhap he so thu nho: ");
+            div = int.Parse(Console.ReadLine());
             foreach(Shape s in lShape) {
-                s.ThuNho(div);
+                if(s.p1.x == 0 || s.p1.x / div != 0 
+                && (s.p1.y == 0 || s.p1.y / div != 0)
+                && (s.p2.x == 0 || s.p2.x / div != 0)
+                && (s.p2.y == 0 || s.p2.y / div != 0)) {
+                    s.p1.x /= div;
+                    s.p1.y /= div;
+                    s.p2.x /= div;
+                    s.p2.y /= div;
+                }
+                else {
+                    flag = true;
+                    Console.WriteLine("He So Thu Nho Qua Lon. Xin Nhap Lai");
+                    break;
+                }
             }
+            if(flag)
+                ThuNho();
         }
         public override void Menu()
         {
-            int chon;
-            do {
-                Console.Write("\t\t\t |===========================COMPLEX OBJECT============================|\n");
-                base.Menu();
-                chon = int.Parse(Console.ReadLine());
-                switch(chon) {
-                    case 1:
-                            this.Ve();
-                            break;
-                    case 2:
-                            Console.WriteLine("Nhap hoanh do va tung do tinh tien: ");
-                            Point p = new Point();
-                            p.Nhap();
-                            this.DiChuyen(p);
-                            break;
-                    case 3:
-                            Console.WriteLine($"Chu vi ComplexObj: {Math.Round(this.ChuVi(), 2)}");
-                            break;
-                    case 4:
-                            Console.WriteLine($"Dien tich ComplexObj: {Math.Round(this.DienTich(), 2)}");
-                            break;
-                    case 5:
-                            int mul;
-                            Console.WriteLine("Nhap he so phong to: ");
-                            mul = int.Parse(Console.ReadLine());
-                            this.PhongTo(mul);
-                            break;
-                    case 6:
-                            int div;
-                            Console.WriteLine("Nhap he so thu nho: ");
-                            div = int.Parse(Console.ReadLine());
-                            this.ThuNho(div);
-                            break;
-                    case 7:
-                            this.Xuat();
-                            break;
-                    case 8:
-                            Console.Clear();
-                            Program.Main(null);
-                            break;
-                    case 9:
-                            Environment.Exit(0);
-                            break;
-                    default:
-                            Console.Clear();
-                            Console.WriteLine("Khong Hop Le. Xin Nhap Lai");
-                            break;
-                }
-            }
-            while(chon != 8 || chon != 9);
+            base.Menu();
         }
         public override void Xuat()
         {
-            Console.WriteLine("--------------------------------------------------------------------------");
-            Console.WriteLine("STT | Hinh            | Toa Do 1 | Toa Do 2 | Mau Sac | Chu Vi | Dien Tich");
-            Console.WriteLine("--------------------------------------------------------------------------");
             foreach (Shape s in lShape)
                 s.Xuat();
+        }
+        public override void ThongTin()
+        {
+            base.ThongTin();
+            this.Xuat();
         }
 
     }

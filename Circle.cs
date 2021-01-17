@@ -40,7 +40,7 @@ namespace Polymorphism
         }
         public override double ChuVi()
         {
-            return 0.5 * 3.14 * this.BanKinh;
+            return 2 * 3.14 * this.BanKinh;
         }
         public override void Ve()
         {

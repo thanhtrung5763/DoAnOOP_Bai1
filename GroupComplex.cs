@@ -16,8 +16,8 @@ namespace Polymorphism
         public static void Xuat()
         {
             for(int i = 0; i < lComp.Count; i++) {
-                Console.WriteLine($"-----------------------------COMPLEX {i}------------------------------------");
-                lComp[i].Xuat();
+                Console.WriteLine($"{"", 25}-----------------------------COMPLEX {i}---------------------------------");
+                lComp[i].ThongTin();
             }
         }
         public static void Menu() {
@@ -73,7 +73,7 @@ namespace Polymorphism
                                     break;
                                     for(int i = 0; i < GroupMerge.Mer.Count; i++) {
                                         Console.WriteLine($"{"", 25}------------------------COMPLEX MERGED/DIVIDED {i}--------------------------");
-                                        GroupMerge.Mer[i].Xuat();
+                                        GroupMerge.Mer[i].ThongTin();
                                     }
                                 break;
                         case 5:

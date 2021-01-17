@@ -63,6 +63,7 @@ namespace Polymorphism
                 }
             }
             Console.WriteLine("Da Devide Xong");
+            TaoKhung();
         }
         public override void DiChuyen(Point p)
         {
@@ -124,9 +125,9 @@ namespace Polymorphism
             this.p2.x = x2Min;
             this.p2.y = y2Min;
         }
-        public override void Xuat()
+        public override void ThongTin()
         {
-            base.Xuat();
+            base.ThongTin();
         }
     }
 }
